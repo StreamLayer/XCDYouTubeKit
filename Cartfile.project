@@ -1,0 +1,8 @@
+XCDYouTubeKit Framework:
+  project: XCDYouTubeKit.xcodeproj
+  sdks:
+  - macosx
+  - iphoneos
+  - iphonesimulator
+  - appletvos
+  - appletvsimulator
