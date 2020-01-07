@@ -9,12 +9,19 @@ workflows:
     - script:
         deps:
           brew:
+<<<<<<< HEAD
           - name: hub
             bin_name: hub
+=======
+          - name: node
+          - name: streamlayer/formulas/carthage
+          - name: streamlayer/formulas/prefixify
+>>>>>>> 9cedc97... feat: auto deploy
         inputs:
         - content: |-
             #!/bin/bash
             set -ex
+<<<<<<< HEAD
             
             ### Cleanup, build, archive
             rm -rf ./Carthage/ ./DerivedData
@@ -41,3 +48,24 @@ app:
   envs:
   - ARTIFACT: "XCDYouTubeKit.framework.zip"
   - UPSTREAM: "git@github.com:0xced/XCDYouTubeKit.git"
+=======
+
+            yarn add semantic-release @semantic-release/exec @semantic-release/git
+
+            xcconfig=$(mktemp /tmp/static.xcconfig.XXXXXX)
+            trap 'rm -f "$xcconfig";' INT TERM HUP EXIT
+
+            echo "MACH_O_TYPE = staticlib" >> $xcconfig
+            echo "DEBUG_INFORMATION_FORMAT = dwarf" >> $xcconfig
+            echo "CLANG_ENABLE_MODULE_DEBUGGING = NO" >> $xcconfig
+            export XCODE_XCCONFIG_FILE="$xcconfig"
+
+            yarn semantic-release
+
+app:
+  envs:
+  - DIR: "Sources"
+  - PRODUCT_NAME: "TvOSPinKeyboard"
+  - PREFIX: "SLR_"
+  - REPORT: "./report.json"
+>>>>>>> 9cedc97... feat: auto deploy

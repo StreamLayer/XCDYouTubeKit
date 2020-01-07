@@ -1,0 +1,19 @@
+{
+  "branch": "master",
+  "plugins": [
+    ["@semantic-release/commit-analyzer", {
+      "preset": "angular"
+    }],
+    ["@semantic-release/exec", {
+      "prepareCmd": "carthage build --commitish v${nextRelease.version} --cache-builds --archive --archive-output SLR_XCDYouTubeKit.framework.zip"
+    }],
+    ["@semantic-release/git", {
+      "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+    }],
+    ["@semantic-release/github", {
+      "assets": [
+        { "path": "SLR_XCDYouTubeKit.framework.zip" }
+      ]
+    }]
+  ]
+}
