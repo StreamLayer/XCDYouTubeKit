@@ -1,3 +1,4 @@
+
 ---
 format_version: '6'
 default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
@@ -28,10 +29,3 @@ workflows:
             export XCODE_XCCONFIG_FILE="$xcconfig"
 
             yarn semantic-release
-
-app:
-  envs:
-  - DIR: "Sources"
-  - PRODUCT_NAME: "TvOSPinKeyboard"
-  - PREFIX: "SLR_"
-  - REPORT: "./report.json"
